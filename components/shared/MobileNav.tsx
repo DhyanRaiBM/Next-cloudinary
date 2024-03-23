@@ -2,11 +2,10 @@
 
 import { navLinks } from "@/constants"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
-import { Sheet } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { SheetContent, SheetTrigger } from "./ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { Button } from "./ui/button"
 
 const MobileNav = () => {
