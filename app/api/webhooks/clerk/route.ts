@@ -33,84 +33,86 @@ export async function POST(req: Request) {
   // Get the body
   const payload = await req.json();
   const body = JSON.stringify(payload);
+  console.log(body);
+  
 
-  // Create a new Svix instance with your secret.
-  const wh = new Webhook(WEBHOOK_SECRET);
+  // // Create a new Svix instance with your secret.
+  // const wh = new Webhook(WEBHOOK_SECRET);
 
-  let evt: WebhookEvent;
+  // let evt: WebhookEvent;
 
-  // Verify the payload with the headers
-  try {
-    evt = wh.verify(body, {
-      "svix-id": svix_id,
-      "svix-timestamp": svix_timestamp,
-      "svix-signature": svix_signature,
-    }) as WebhookEvent;
-  } catch (err) {
-    console.error("Error verifying webhook:", err);
-    return new Response("Error occured", {
-      status: 400,
-    });
-  }
+  // // Verify the payload with the headers
+  // try {
+  //   evt = wh.verify(body, {
+  //     "svix-id": svix_id,
+  //     "svix-timestamp": svix_timestamp,
+  //     "svix-signature": svix_signature,
+  //   }) as WebhookEvent;
+  // } catch (err) {
+  //   console.error("Error verifying webhook:", err);
+  //   return new Response("Error occured", {
+  //     status: 400,
+  //   });
+  // }
 
-  // Get the ID and type
-  const { id } = evt.data;
-  const eventType = evt.type;
+  // // Get the ID and type
+  // const { id } = evt.data;
+  // const eventType = evt.type;
 
-  // CREATE
-  if (eventType === "user.created") {
-    const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
+  // // CREATE
+  // if (eventType === "user.created") {
+  //   const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
-    const user = {
-      clerkId: id,
-      email: email_addresses[0].email_address,
-      username: username!,
-      firstName: first_name,
-      lastName: last_name,
-      photo: image_url,
-    };
+  //   const user = {
+  //     clerkId: id,
+  //     email: email_addresses[0].email_address,
+  //     username: username!,
+  //     firstName: first_name,
+  //     lastName: last_name,
+  //     photo: image_url,
+  //   };
 
-    const newUser = await createUser(user);
+  //   const newUser = await createUser(user);
 
-    // Set public metadata
-    if (newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
-        publicMetadata: {
-          userId: newUser._id,
-        },
-      });
-    }
+  //   // Set public metadata
+  //   if (newUser) {
+  //     await clerkClient.users.updateUserMetadata(id, {
+  //       publicMetadata: {
+  //         userId: newUser._id,
+  //       },
+  //     });
+  //   }
 
-    return NextResponse.json({ message: "OK", user: newUser });
-  }
+  //   return NextResponse.json({ message: "OK", user: newUser });
+  // }
 
-  // UPDATE
-  if (eventType === "user.updated") {
-    const { id, image_url, first_name, last_name, username } = evt.data;
+  // // UPDATE
+  // if (eventType === "user.updated") {
+  //   const { id, image_url, first_name, last_name, username } = evt.data;
 
-    const user = {
-      firstName: first_name,
-      lastName: last_name,
-      username: username!,
-      photo: image_url,
-    };
+  //   const user = {
+  //     firstName: first_name,
+  //     lastName: last_name,
+  //     username: username!,
+  //     photo: image_url,
+  //   };
 
-    const updatedUser = await updateUser(id, user);
+  //   const updatedUser = await updateUser(id, user);
 
-    return NextResponse.json({ message: "OK", user: updatedUser });
-  }
+  //   return NextResponse.json({ message: "OK", user: updatedUser });
+  // }
 
-  // DELETE
-  if (eventType === "user.deleted") {
-    const { id } = evt.data;
+  // // DELETE
+  // if (eventType === "user.deleted") {
+  //   const { id } = evt.data;
 
-    const deletedUser = await deleteUser(id!);
+  //   const deletedUser = await deleteUser(id!);
 
-    return NextResponse.json({ message: "OK", user: deletedUser });
-  }
+  //   return NextResponse.json({ message: "OK", user: deletedUser });
+  // }
 
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-  console.log("Webhook body:", body);
+  // console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
+  // console.log("Webhook body:", body);
 
-  return new Response("", { status: 200 });
+  // return new Response("", { status: 200 });
 }
