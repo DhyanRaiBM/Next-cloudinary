@@ -5,8 +5,8 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
-import { Button } from "./ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
+import { Button } from "../ui/button"
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -15,7 +15,7 @@ const MobileNav = () => {
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
         <Image
-          src="/assets/images/logo-text.svg"
+          src="/assets/images/text-logo2.png"
           alt="logo"
           width={180}
           height={28}

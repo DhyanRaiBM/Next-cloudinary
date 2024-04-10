@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ERROR HANDLER
+//= ERROR HANDLER
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
     // This is a native JavaScript error (e.g., TypeError, RangeError)
@@ -42,6 +42,8 @@ const shimmer = (w: number, h: number) => `
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
 </svg>`;
 
+
+//=Image shimmer while uploading:
 const toBase64 = (str: string) =>
   typeof window === "undefined"
     ? Buffer.from(str).toString("base64")
@@ -84,7 +86,7 @@ export function removeKeysFromQuery({
   return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
 }
 
-// DEBOUNCE
+//=DEBOUNCE
 export const debounce = (func: (...args: any[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | null;
   return (...args: any[]) => {
@@ -93,7 +95,7 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
   };
 };
 
-// GE IMAGE SIZE
+//=GET IMAGE SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 export const getImageSize = (
   type: string,
@@ -130,7 +132,7 @@ export const download = (url: string, filename: string) => {
     .catch((error) => console.log({ error }));
 };
 
-// DEEP MERGE OBJECTS
+//= DEEP MERGE OBJECTS
 export const deepMergeObjects = (obj1: any, obj2: any) => {
   if(obj2 === null || obj2 === undefined) {
     return obj1;

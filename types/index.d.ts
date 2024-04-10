@@ -55,7 +55,7 @@ declare type CreateUserParams = {
     path: string;
   };
   
-  declare type Transformations = {
+  declare type Transformations = { 
     restore?: boolean;
     fillBackground?: boolean;
     remove?: {
@@ -67,6 +67,10 @@ declare type CreateUserParams = {
       prompt?: string;
       to: string;
       multiple?: boolean;
+    };
+    replace?: {
+      from: string;
+      to: string;
     };
     removeBackground?: boolean;
   };
@@ -93,7 +97,8 @@ declare type CreateUserParams = {
     | "fill"
     | "remove"
     | "recolor"
-    | "removeBackground";
+    | "removeBackground"
+    | "replace";
   
   // ====== URL QUERY PARAMS
   declare type FormUrlQueryParams = {

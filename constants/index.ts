@@ -30,6 +30,11 @@ export const navLinks = [
       icon: "/assets/icons/camera.svg",
     },
     {
+      label: "Object Replace",
+      route: "/transformations/add/replace",
+      icon: "/assets/icons/filter.svg",
+    },
+    {
       label: "Profile",
       route: "/profile",
       icon: "/assets/icons/profile.svg",
@@ -159,6 +164,15 @@ export const navLinks = [
       },
       icon: "filter.svg",
     },
+    replace: {
+      type: "replace",
+      title: "Object Replace",
+      subTitle: "Identify and Replace objects from the image",
+      config: {
+        replace: { from: "", to: "", multiple: true },
+      },
+      icon: "filter.svg",
+    },
   };
   
   export const aspectRatioOptions = {
@@ -168,11 +182,11 @@ export const navLinks = [
       width: 1000,
       height: 1000,
     },
-    "3:4": {
-      aspectRatio: "3:4",
-      label: "Standard Portrait (3:4)",
-      width: 1000,
-      height: 1334,
+    "16:9": {
+      aspectRatio: "16:9",
+      label: "Standard Portrait (16:9)",
+      width: 1778,
+      height: 1000,
     },
     "9:16": {
       aspectRatio: "9:16",
@@ -191,3 +205,7 @@ export const navLinks = [
   };
   
   export const creditFee = -1;
+
+
+
+
