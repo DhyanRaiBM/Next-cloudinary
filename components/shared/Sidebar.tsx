@@ -27,7 +27,7 @@ const Sidebar = () => {
                   <li key={link.route} className={`sidebar-nav_element group ${
                     isActive ? 'bg-gradient-to-r from-slate-900 to-slate-700 text-white hover:text-white' : 'text-gray-700'
                   }`}>
-                    <Link className="sidebar-link" href={link.route}>
+                    <Link className="sidebar-link" href={link.route} prefetch={true}>
                       <Image 
                         src={link.icon}
                         alt="logo"
