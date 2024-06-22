@@ -24,11 +24,11 @@ export const navLinks = [
     //   route: "/transformations/add/recolor",
     //   icon: "/assets/icons/filter.svg",
     // },
-    // {
-    //   label: "Object Replace",
-    //   route: "/transformations/add/replace",
-    //   icon: "/assets/icons/filter.svg",
-    // },
+    {
+      label: "Object Replace",
+      route: "/transformations/add/replace",
+      icon: "/assets/icons/filter.svg",
+    },
   ];
   
   export const transformationTypes = {
