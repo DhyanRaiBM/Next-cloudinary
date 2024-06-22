@@ -1,7 +1,6 @@
 "use client"
 
 import { navLinks } from "@/constants"
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -23,8 +22,6 @@ const MobileNav = () => {
       </Link>
 
       <nav className="flex gap-2">
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
 
           <Sheet>
             <SheetTrigger>
@@ -70,13 +67,6 @@ const MobileNav = () => {
               </>
             </SheetContent>
           </Sheet>
-        </SignedIn>
-
-        <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover">
-              <Link href="/sign-in">Login</Link>
-            </Button>
-          </SignedOut>
       </nav>
     </header>
   )
